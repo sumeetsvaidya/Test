@@ -5,6 +5,7 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class test {
 	static ChromeOptions options = new ChromeOptions();
@@ -15,9 +16,13 @@ public class test {
 	public static void main(String[] args) {
 		
 	
-		System.setProperty("webdriver.chrome.driver",projectPath + "/Drivers/Chrome/chromedriver");	
-		driver = new ChromeDriver(options);
+		//System.setProperty("webdriver.chrome.driver",projectPath + "/Drivers/Chrome/chromedriver"); //For Chrome
+		System.setProperty("webdriver.gecko.driver",projectPath + "/Drivers/Gecko/geckodriver"); //For Gecko
 		options.setAcceptInsecureCerts(true);
+		
+		//driver = new ChromeDriver(options); //For chrome driver
+		driver = new FirefoxDriver(); //For Gecko driver
+		
 		driver.get("http://google.com");
 		driver.findElement(By.name("q")).sendKeys("automation");
 		driver.findElement(By.name("q")).sendKeys(Keys.RETURN);
